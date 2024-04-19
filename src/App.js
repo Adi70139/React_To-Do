@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import './App.css'
 function App() {
       let [todoInput, updateInput] = useState()
@@ -6,15 +7,13 @@ function App() {
       let [todoList, updateTodos] = useState(
             [
                   {
-                        id: 1,
+                        id: uuidv4(),
                         task: 'Hlo this is Aditya🙌'
 
                   },
                  
             ]
       )
-
-      let nextId = 2
 
       function addNewTodo() {
 
@@ -26,7 +25,7 @@ function App() {
                   let newTodos = [
                         ...todoList,
                         {
-                              id: nextId++,
+                              id: uuidv4(),
                               task: todoInput
 
                         }
@@ -41,7 +40,7 @@ function App() {
       {
             let filteredTodos = todoList.filter(
                   (todo) => {
-                        return todo.id != id
+                        return todo.id !== id
                   }
             )
             updateTodos(filteredTodos);
